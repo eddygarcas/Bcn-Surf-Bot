@@ -71,16 +71,38 @@ class BotMessage
   end
 
   def self.create_inline_result(item, count = 1)
-    Telegram::Bot::Types::InlineQueryResultLocation.new(
+    Telegram::Bot::Types::InlineQueryResultVenue.new(
         id: count.to_s,
         latitude: item.latitude,
         longitude: item.longitude,
-        title: item.to_inline_title,
-        input_message_content: Telegram::Bot::Types::InputVenueMessageContent.new(
-            latitude: item.latitude,
-            longitude: item.longitude,
-            title: item.name,
-            address: item.to_string
-        ))
+        title: item.name,
+        address: item.to_s,
+        input_message_content: venue_message(item))
+
+    # Telegram::Bot::Types::InlineQueryResultLocation.new(
+    #     id: count.to_s,
+    #     latitude: item.latitude,
+    #     longitude: item.longitude,
+    #     title: item.to_s,
+    #     input_message_content: text_message(item))
+  end
+
+  private
+
+  def self.venue_message (item)
+    Telegram::Bot::Types::InputVenueMessageContent.new(
+        latitude: item.latitude,
+        longitude: item.longitude,
+        title: item.name,
+        address: item.to_s
+    )
+  end
+
+  def self.text_message (item)
+    Telegram::Bot::Types::InputTextMessageContent.new(
+        message_text: item.to_s,
+        parse_mode: 'Markdown',
+        disable_web_page_preview: true
+    )
   end
 end

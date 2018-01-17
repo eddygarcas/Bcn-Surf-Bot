@@ -17,9 +17,9 @@ class BcnSurfBotTest < Test::Unit::TestCase
   end
 
   def test_get_barcelona_spot
-
     spot = MswHttpSearch.new.get_spot(3535)
-    assert_not_nil(spot)
+    pp spot.to_s
+    assert_not_nil(spot.to_s)
 
   end
 
