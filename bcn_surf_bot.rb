@@ -4,7 +4,7 @@ require_relative 'helpers/bot_message'
 
 
 
-Telegram::Bot::Client.run(BotHelper.config[:bot_api]) do |bot|
+Telegram::Bot::Client.run(ENV[:BOT_API.to_s]) do |bot|
   bot.listen do |message|
     case message
 

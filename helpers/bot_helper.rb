@@ -13,7 +13,8 @@ class BotHelper
   def self.get(data = '3535')
     base_uri = BotHelper.config[:key_api]
     location = BotHelper.config[data.query.to_i]
-    MswHttpSearch.new.get_spot(data.query.to_i, location, base_uri)
+    fields = BotHelper.config[:fields]
+    MswHttpSearch.new.get_spot(data.query.to_i, location, base_uri, fields)
   end
 
 

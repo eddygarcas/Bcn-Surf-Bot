@@ -1,4 +1,4 @@
-require 'httparty' #Need to require gems not part of the original installation
+require 'httparty'
 require_relative '../model/surf_spot_information'
 require 'pp'
 require 'date'
@@ -8,9 +8,9 @@ class MswHttpSearch
 
   format :json
 
-  def get_spot(id, location, base_uri)
-    self.class.base_uri base_uri
-    response = self.class.get('/forecast', query: {spot_id: id})
+  def get_spot(id, location, base_uri, fields)
+    self.class.base_uri ENV[:MSW_API.to_s]
+    response = self.class.get('/forecast', query: {spot_id: id, units: location[:units], fields: fields})
     parse_response(response, location)
   end
 
