@@ -37,7 +37,10 @@
         <RUBY_RUN_CONFIG NAME="SHOULD_USE_SDK" VALUE="false" />
         <RUBY_RUN_CONFIG NAME="ALTERN_SDK_NAME" VALUE="" />
         <RUBY_RUN_CONFIG NAME="myPassParentEnvs" VALUE="true" />
-        <envs />
+        <envs>
+          <env name="MSW_API" value="http://magicseaweed.com/api/6d036580539d13b7f78aac3368debcd8/" />
+          <env name="BOT_API" value="520728214:AAE9yOWbX6p2J2v3G7Q5cWRECvhgsWSGO6Q" />
+        </envs>
         <EXTENSION ID="BundlerRunConfigurationExtension" bundleExecEnabled="true" />
         <EXTENSION ID="JRubyRunConfigurationExtension" NailgunExecEnabled="false" />
         <EXTENSION ID="RubyCoverageRunConfigurationExtension" enabled="false" sample_coverage="true" track_test_folders="true" runner="rcov">

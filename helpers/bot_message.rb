@@ -1,10 +1,10 @@
-START_BOT_MESSAGE = "Thanks for using BcnSurfForecast Bot.\nThis bot will provide surf forecast from spots nearby Barcelona.\nSelect one spot..."
+START_BOT_MESSAGE = "Thanks for using BcnSurf forecast Bot.\nThis bot will provide surf forecast from spots nearby Barcelona.\nData provided by magicseaweed.com"
 
 BOT_ERROR_MESSAGE = "Oops! Something went wrong, please press /start button again."
 
 BOT_HELP_MESSAGE = "Use inline buttons below here, or type the inline command @bcnsurfbot in any chat to find out the forecast.\n"
 
-BOT_ACTION_MESSAGE = "Select one spot..."
+BOT_ACTION_MESSAGE = "Surf spots near by Barcelona:"
 
 class BotMessage
 
@@ -15,6 +15,7 @@ class BotMessage
                            text: %Q{#{START_BOT_MESSAGE}},
                            reply_markup: markup)
     else
+      # bot.api.send_photo(chat_id: chatId,photo: 'http://www.userlogos.org/files/logos/x9bgood/msw.png')
       bot.api.send_message(chat_id: chatId,
                            text: %Q{#{text}},
                            reply_markup: markup)
