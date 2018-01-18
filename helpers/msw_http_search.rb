@@ -2,24 +2,16 @@ require 'httparty' #Need to require gems not part of the original installation
 require_relative '../model/surf_spot_information'
 require 'pp'
 require 'date'
-require 'yaml'
 
 class MswHttpSearch
   include HTTParty
 
-  @@config_yaml = YAML.load_file 'config/config.yml'
+  format :json
 
-  attr_reader :spot_now
-
-
-  base_uri "http://magicseaweed.com/api/#{@@config_yaml[:key_api]}/"
-  #q: request parameter of search
-  #default_params fields: 'spot_id, shortDescription', q: 'search'
-  format :json #could be XML also.
-
-  def get_spot(id)
+  def get_spot(id, location, base_uri)
+    self.class.base_uri base_uri
     response = self.class.get('/forecast', query: {spot_id: id})
-    parse_response(response, @@config_yaml[id])
+    parse_response(response, location)
   end
 
   private

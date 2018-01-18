@@ -77,14 +77,10 @@ class BotMessage
         longitude: item.longitude,
         title: item.name,
         address: item.to_s,
+        thumb_url: item.charts[:swell.to_s],
+        thumb_width: 150,
+        thumb_height: 91,
         input_message_content: venue_message(item))
-
-    # Telegram::Bot::Types::InlineQueryResultLocation.new(
-    #     id: count.to_s,
-    #     latitude: item.latitude,
-    #     longitude: item.longitude,
-    #     title: item.to_s,
-    #     input_message_content: text_message(item))
   end
 
   private

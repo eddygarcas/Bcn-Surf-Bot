@@ -4,19 +4,14 @@ require_relative 'helpers/bot_message'
 
 
 
-TELEGRAM_BOT_TOKEN = '520728214:AAE9yOWbX6p2J2v3G7Q5cWRECvhgsWSGO6Q' #ENV['TELEGRAM_BOT_TOKEN']
-
-
-Telegram::Bot::Client.run(TELEGRAM_BOT_TOKEN) do |bot|
+Telegram::Bot::Client.run(BotHelper.config[:bot_api]) do |bot|
   bot.listen do |message|
     case message
-      when Telegram::Bot::Types::CallbackQuery
-        surfSpot = BotHelper.get(message.data)
-        BotMessage.send_message(bot, message.from.id, surfSpot)
 
       when Telegram::Bot::Types::InlineQuery
-        surfspot = BotHelper.get(message)
-        BotMessage.send_message(bot, message.id, surfspot, true)
+        if BotHelper.config.include?(message.query.to_i)
+          BotMessage.send_message(bot, message.id, BotHelper.get(message), true)
+        end
 
       when Telegram::Bot::Types::Message
         if message.venue && message.venue.location
@@ -31,7 +26,7 @@ Telegram::Bot::Client.run(TELEGRAM_BOT_TOKEN) do |bot|
           when 'Start' || '/start'
             BotMessage.send_bot_message(bot, message.chat.id, BotHelper.inline_markup)
           else
-            unless (message.text.nil? || message.text.start_with?('At'))
+            unless message.text.nil?
               BotMessage.send_bot_message(bot, message.chat.id, BotHelper.bot_markup, BOT_ERROR_MESSAGE)
             end
         end

@@ -1,12 +1,19 @@
 require_relative 'msw_http_search'
+require 'yaml'
+
 
 class BotHelper
 
-  @spots = { spotbarcelona: 3535, spotsitges: 3536, spotmasnou: 3530}
+  @@config_yaml = YAML.load_file 'config/config.yml'
+
+  def self.config
+    @@config_yaml
+  end
 
   def self.get(data = '3535')
-    #The data.query.downcase would include Spot Barcelona(3535)/Sitges(3536)/Masnou(3530)
-    MswHttpSearch.new.get_spot(data.query.to_i)
+    base_uri = BotHelper.config[:key_api]
+    location = BotHelper.config[data.query.to_i]
+    MswHttpSearch.new.get_spot(data.query.to_i, location, base_uri)
   end
 
 
