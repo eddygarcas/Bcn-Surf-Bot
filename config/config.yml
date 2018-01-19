@@ -1,17 +1,18 @@
-:bot_api:
-:key_api:
 :fields: localTimestamp,swell.components.combined.*,wind.speed,charts.swell
-3535:
-  :name: Barcelona
+barcelona:
+  :id: 3535
+  :name: Barceloneta
   :latitude: 41.374017
   :longitude: 2.189929
   :units: eu
-3536:
+sitges:
+  :id: 3536
   :name: Sitges
   :latitude: 41.235629
   :longitude: 1.827288
   :units: eu
-3530:
+masnou:
+  :id: 3530
   :name: Masnou
   :latitude: 41.475521
   :longitude: 2.307683

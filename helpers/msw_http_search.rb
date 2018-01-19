@@ -8,9 +8,9 @@ class MswHttpSearch
 
   format :json
 
-  def get_spot(id, location, base_uri, fields)
+  def get_spot(location, fields)
     self.class.base_uri ENV[:MSW_API.to_s]
-    response = self.class.get('/forecast', query: {spot_id: id, units: location[:units], fields: fields})
+    response = self.class.get('/forecast', query: {spot_id: location[:id], units: location[:units], fields: fields})
     parse_response(response, location)
   end
 

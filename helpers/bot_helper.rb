@@ -10,11 +10,10 @@ class BotHelper
     @@config_yaml
   end
 
-  def self.get(data = '3535')
-    base_uri = BotHelper.config[:key_api]
-    location = BotHelper.config[data.query.to_i]
+  def self.get(data = 'Barcelona')
+    location = BotHelper.config[data.query.to_s.downcase]
     fields = BotHelper.config[:fields]
-    MswHttpSearch.new.get_spot(data.query.to_i, location, base_uri, fields)
+    MswHttpSearch.new.get_spot( location, fields)
   end
 
 
@@ -33,8 +32,8 @@ class BotHelper
 
 
   def self.chat_inline_location_markup
-    [[Telegram::Bot::Types::InlineKeyboardButton.new(text: 'Barcelona', switch_inline_query_current_chat: '3535'),
-      Telegram::Bot::Types::InlineKeyboardButton.new(text: 'Sitges', switch_inline_query_current_chat: '3536'),
-      Telegram::Bot::Types::InlineKeyboardButton.new(text: 'Masnou', switch_inline_query_current_chat: '3530')]]
+    [[Telegram::Bot::Types::InlineKeyboardButton.new(text: 'Barcelona', switch_inline_query_current_chat: 'Barcelona'),
+      Telegram::Bot::Types::InlineKeyboardButton.new(text: 'Sitges', switch_inline_query_current_chat: 'Sitges'),
+      Telegram::Bot::Types::InlineKeyboardButton.new(text: 'Masnou', switch_inline_query_current_chat: 'Masnou')]]
   end
 end

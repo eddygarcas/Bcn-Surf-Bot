@@ -9,7 +9,7 @@ Telegram::Bot::Client.run(ENV[:BOT_API.to_s]) do |bot|
     case message
 
       when Telegram::Bot::Types::InlineQuery
-        if BotHelper.config.include?(message.query.to_i)
+        if BotHelper.config.include?(message.query.to_s.downcase)
           BotMessage.send_message(bot, message.id, BotHelper.get(message), true)
         end
 
