@@ -13,7 +13,7 @@ class SurfSpotInformation < DataBuilder
 
   def now?
     local_converted = Time.at(@localTimestamp)
-    return false unless local_converted.day.equal?(Time.now.day)
+    #return false unless local_converted.day.equal?(Time.now.day)
     now_hour = Time.now.hour > 21 ? 20 : Time.now.hour
     ((local_converted.hour <=> now_hour)).equal?(1)
   end
@@ -25,7 +25,7 @@ class SurfSpotInformation < DataBuilder
   protected
 
   def format_time
-    Time.at(localTimestamp).strftime("at %I:%M%p")
+    Time.at(localTimestamp).strftime("at %d/%m/%y %I:%M%p")
   end
 
   private

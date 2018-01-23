@@ -1,19 +1,27 @@
 :fields: localTimestamp,swell.components.combined.*,wind.speed,charts.swell
-barcelona:
-  :id: 3535
-  :name: Barceloneta
-  :latitude: 41.374017
-  :longitude: 2.189929
-  :units: eu
-sitges:
-  :id: 3536
-  :name: Sitges
-  :latitude: 41.235629
-  :longitude: 1.827288
-  :units: eu
-masnou:
-  :id: 3530
-  :name: Masnou
-  :latitude: 41.475521
-  :longitude: 2.307683
-  :units: eu
+:spots:
+  barcelona:
+    :id: 3535
+    :name: Barceloneta
+    :latitude: 41.374017
+    :longitude: 2.189929
+    :units: eu
+  sitges:
+    :id: 3536
+    :name: Sitges
+    :latitude: 41.235629
+    :longitude: 1.827288
+    :units: eu
+  masnou:
+    :id: 3530
+    :name: Masnou
+    :latitude: 41.475521
+    :longitude: 2.307683
+    :units: eu
+:actions:
+  :spots:
+    barcelona:
+    sitges:
+    masnou:
+  :inputs:
+    setheight:

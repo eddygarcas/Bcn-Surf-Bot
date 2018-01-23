@@ -11,7 +11,10 @@
         <RTEST_RUN_CONFIG_SETTINGS_ID NAME="SHOULD_USE_SDK" VALUE="false" />
         <RTEST_RUN_CONFIG_SETTINGS_ID NAME="ALTERN_SDK_NAME" VALUE="" />
         <RTEST_RUN_CONFIG_SETTINGS_ID NAME="myPassParentEnvs" VALUE="true" />
-        <envs />
+        <envs>
+          <env name="MSW_API" value="http://magicseaweed.com/api/6d036580539d13b7f78aac3368debcd8/" />
+          <env name="BOT_API" value="520728214:AAE9yOWbX6p2J2v3G7Q5cWRECvhgsWSGO6Q" />
+        </envs>
         <EXTENSION ID="BundlerRunConfigurationExtension" bundleExecEnabled="false" />
         <EXTENSION ID="JRubyRunConfigurationExtension" NailgunExecEnabled="false" />
         <EXTENSION ID="RubyCoverageRunConfigurationExtension" enabled="false" sample_coverage="true" track_test_folders="true" runner="rcov">
