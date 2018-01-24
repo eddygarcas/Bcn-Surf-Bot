@@ -16,9 +16,12 @@ class SurfSpotInformation < DataBuilder
   end
 
   def to_s
-    %Q{Swell #{height}m at #{period}s Dir #{compassDirection}\nWind #{speed}kph #{format_time}}
+    %Q{#{name} Swell #{height}m at #{period}s Dir #{compassDirection}\nWind #{speed}kph #{format_time}}
   end
 
+  def to_html
+    %Q{<b>#{name}</b> <pre>Swell #{height}m at #{period}s Dir #{compassDirection} Wind #{speed}kph #{format_time}</pre> <a href='#{charts[:swell.to_s]}'>Chart #{format_time}</a> }
+  end
   protected
 
   def format_time

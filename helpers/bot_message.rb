@@ -85,12 +85,12 @@ class BotMessage
         thumb_url: item.charts[:swell.to_s],
         thumb_width: 150,
         thumb_height: 91,
-        input_message_content: venue_message(item))
+        input_message_content: text_message(item))
   end
 
   private
 
-  def self.venue_message (item)
+  def self.venue_message(item)
     Telegram::Bot::Types::InputVenueMessageContent.new(
         latitude: item.latitude,
         longitude: item.longitude,
@@ -99,11 +99,11 @@ class BotMessage
     )
   end
 
-  def self.text_message (item)
+  def self.text_message(item)
     Telegram::Bot::Types::InputTextMessageContent.new(
-        message_text: item.to_s,
-        parse_mode: 'Markdown',
-        disable_web_page_preview: true
+        message_text: item.to_html,
+        parse_mode: 'HTML',
+        disable_web_page_preview: false
     )
   end
 end

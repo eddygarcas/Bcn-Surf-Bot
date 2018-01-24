@@ -10,7 +10,7 @@ Telegram::Bot::Client.run(ENV[:BOT_API.to_s]) do |bot|
 
       when Telegram::Bot::Types::InlineQuery
         items = []
-        if BotHelper.action_spots?(message.query)
+        if BotHelper.action_spots?(message)
           items = BotHelper.get(message.query)
         end
         BotMessage.send_message(bot, message.id, items, true)
@@ -29,7 +29,7 @@ Telegram::Bot::Client.run(ENV[:BOT_API.to_s]) do |bot|
             BotMessage.send_bot_message(bot, message.chat.id, BotHelper.inline_markup)
           else
             unless message.text.nil?
-              BotMessage.send_bot_message(bot, message.chat.id, BotHelper.bot_markup, BOT_ERROR_MESSAGE)
+              BotMessage.send_bot_message(bot, message.chat.id, BotHelper.inline_markup, BOT_ACTION_MESSAGE)
             end
         end
     end

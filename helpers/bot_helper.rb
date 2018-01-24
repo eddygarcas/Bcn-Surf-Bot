@@ -6,7 +6,6 @@ class BotHelper < ConfigHelper
   def self.get(data = 'Barcelona')
     location = config(:spots)[data.to_s.downcase]
     fields = config(:fields)
-    @@logger.info("MswHttpSearch for #{location[:name]} id #{location[:id]} at #{Time.now}")
     MswHttpSearch.new.get_spot(location, fields)
   end
 
@@ -22,8 +21,12 @@ class BotHelper < ConfigHelper
     Telegram::Bot::Types::InlineKeyboardMarkup.new(inline_keyboard: kb)
   end
 
-  def self.action_spots? (query)
-    config(:actions)[:spots].include?(query.to_s.downcase)
+  def self.action_spots?(message)
+    location = config(:spots)[message.query.to_s.downcase]
+    @@logger.info(
+        "MswHttpSearch #{message.from.username} id.#{message.from.id} for #{location[:name]} code #{location[:id]} at #{Time.now} from #{message.from.language_code}"
+    )
+    config(:actions)[:spots].include?(message.query.to_s.downcase)
   end
 
   private

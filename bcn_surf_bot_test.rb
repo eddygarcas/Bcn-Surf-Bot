@@ -19,8 +19,13 @@ class BcnSurfBotTest < Test::Unit::TestCase
     # Do nothing
   end
 
-  def test_actions
-    assert_true(BotHelper.action_spots?(:barcelona.to_s))
+  def actions
+    message = Telegram::Bot::Types::InlineQuery.new
+    message.query = :barcelona.to_s
+    message.from.id = 1
+    message.from.username = 'ed'
+    message.from.language_code = 'en-US'
+    assert_true(BotHelper.action_spots?(message))
   end
 
   def test_get_barcelona_spot
