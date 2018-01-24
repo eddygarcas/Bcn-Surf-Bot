@@ -47,10 +47,12 @@ class BotMessage
   private
 
   def self.send_inline_location(bot, chatId, item)
-    bot.api.answer_inline_query(
+      bot.api.answer_inline_query(
         inline_query_id: chatId,
-        results: inline_result(item)
-    )
+        results: inline_result(item),
+        cache_time: 10,
+        is_personal: true
+      )
   end
 
   def self.send_callback_location(bot, chatId, item)

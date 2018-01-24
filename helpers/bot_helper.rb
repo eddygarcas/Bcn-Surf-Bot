@@ -6,7 +6,8 @@ class BotHelper < ConfigHelper
   def self.get(data = 'Barcelona')
     location = config(:spots)[data.to_s.downcase]
     fields = config(:fields)
-    MswHttpSearch.new.get_spot( location, fields)
+    @@logger.info("MswHttpSearch for #{location[:name]} id #{location[:id]} at #{Time.now}")
+    MswHttpSearch.new.get_spot(location, fields)
   end
 
   def self.bot_markup

@@ -43,6 +43,12 @@ class BcnSurfBotTest < Test::Unit::TestCase
     }
   end
 
+  def test_inline_result_from_empty_array
+    elem = BotMessage.inline_result([])
+    assert_empty(elem)
+    pp elem
+  end
+
   def test_get_404_error_code
     assert_raise ArgumentError do
       MswHttpSearch.new.get_spot(nil,@@config[:fields])

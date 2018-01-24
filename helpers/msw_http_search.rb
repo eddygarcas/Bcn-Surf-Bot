@@ -12,7 +12,7 @@ class MswHttpSearch
     return raise ArgumentError.new('Missing field location') if location.nil?
     self.class.base_uri ENV[:MSW_API.to_s]
     response = self.class.get('/forecast', query: {spot_id: location[:id], units: location[:units], fields: fields})
-    parse_response(response, location)
+    parse_response(response, location).take(ENV[:RESULTS.to_s].to_i)
   end
 
   private

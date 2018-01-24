@@ -9,9 +9,11 @@ Telegram::Bot::Client.run(ENV[:BOT_API.to_s]) do |bot|
     case message
 
       when Telegram::Bot::Types::InlineQuery
+        items = []
         if BotHelper.action_spots?(message.query)
-          BotMessage.send_message(bot, message.id, BotHelper.get(message.query), true)
+          items = BotHelper.get(message.query)
         end
+        BotMessage.send_message(bot, message.id, items, true)
 
       when Telegram::Bot::Types::Message
         if message.venue && message.venue.location

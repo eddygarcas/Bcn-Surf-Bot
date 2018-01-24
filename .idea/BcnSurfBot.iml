@@ -14,6 +14,7 @@
         <envs>
           <env name="MSW_API" value="http://magicseaweed.com/api/6d036580539d13b7f78aac3368debcd8/" />
           <env name="BOT_API" value="520728214:AAE9yOWbX6p2J2v3G7Q5cWRECvhgsWSGO6Q" />
+          <env name="RESULTS" value="35" />
         </envs>
         <EXTENSION ID="BundlerRunConfigurationExtension" bundleExecEnabled="false" />
         <EXTENSION ID="JRubyRunConfigurationExtension" NailgunExecEnabled="false" />
@@ -43,6 +44,7 @@
         <envs>
           <env name="MSW_API" value="http://magicseaweed.com/api/6d036580539d13b7f78aac3368debcd8/" />
           <env name="BOT_API" value="520728214:AAE9yOWbX6p2J2v3G7Q5cWRECvhgsWSGO6Q" />
+          <env name="RESULTS" value="35" />
         </envs>
         <EXTENSION ID="BundlerRunConfigurationExtension" bundleExecEnabled="true" />
         <EXTENSION ID="JRubyRunConfigurationExtension" NailgunExecEnabled="false" />

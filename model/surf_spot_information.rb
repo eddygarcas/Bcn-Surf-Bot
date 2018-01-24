@@ -12,10 +12,7 @@ class SurfSpotInformation < DataBuilder
   end
 
   def now?
-    local_converted = Time.at(@localTimestamp)
-    #return false unless local_converted.day.equal?(Time.now.day)
-    now_hour = Time.now.hour > 21 ? 20 : Time.now.hour
-    ((local_converted.hour <=> now_hour)).equal?(1)
+    ((Time.at(@localTimestamp) <=> Time.now)).equal?(1)
   end
 
   def to_s
