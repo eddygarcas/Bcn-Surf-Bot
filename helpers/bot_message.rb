@@ -72,32 +72,21 @@ class BotMessage
     else
       result << create_inline_result(item)
     end
-    return result
+    result
   end
 
   def self.create_inline_result(item, count = 1)
-    Telegram::Bot::Types::InlineQueryResultVenue.new(
+    Telegram::Bot::Types::InlineQueryResultArticle.new(
+        type: 'article',
         id: count.to_s,
-        latitude: item.latitude,
-        longitude: item.longitude,
-        title: item.name,
-        address: item.to_s,
         thumb_url: item.charts[:swell.to_s],
-        thumb_width: 150,
-        thumb_height: 91,
-        input_message_content: text_message(item))
+        title: item.name,
+        description: item.to_s,
+        input_message_content: text_message(item)
+    )
   end
 
   private
-
-  def self.venue_message(item)
-    Telegram::Bot::Types::InputVenueMessageContent.new(
-        latitude: item.latitude,
-        longitude: item.longitude,
-        title: item.name,
-        address: item.to_s
-    )
-  end
 
   def self.text_message(item)
     Telegram::Bot::Types::InputTextMessageContent.new(

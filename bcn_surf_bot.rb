@@ -1,6 +1,7 @@
 require 'telegram/bot'
 require_relative 'helpers/bot_helper'
 require_relative 'helpers/bot_message'
+require_relative 'helpers/config_helper'
 
 
 
@@ -10,10 +11,12 @@ Telegram::Bot::Client.run(ENV[:BOT_API.to_s]) do |bot|
 
       when Telegram::Bot::Types::InlineQuery
         items = []
-        if BotHelper.action_spots?(message)
+        if ConfigHelper.action_spots?(message)
           items = BotHelper.get(message.query)
+          ConfigHelper.log(message)
         end
         BotMessage.send_message(bot, message.id, items, true)
+
 
       when Telegram::Bot::Types::Message
         if message.venue && message.venue.location
