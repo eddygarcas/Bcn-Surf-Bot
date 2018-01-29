@@ -1,23 +1,15 @@
-START_BOT_MESSAGE = "Thanks for using BcnSurf forecast Bot.\nThis bot will provide surf forecast from spots nearby Barcelona."
+require_relative 'config_helper'
 
-BOT_ERROR_MESSAGE = "Oops! Something went wrong, please press /start button again."
-
-BOT_HELP_MESSAGE = "Use inline buttons below here, or type the inline command @bcnsurfbot in any chat to find out the forecast.\n"
-
-BOT_ACTION_MESSAGE = "Surf spots near by Barcelona:"
-
-BOT_MSW_LINK = "More at https://magicseaweed.com/"
-
-class BotMessage
+class BotMessage < ConfigHelper
 
 
   def self.send_bot_message(bot, chatId, markup, text = nil)
     if text.nil?
       bot.api.send_message(chat_id: chatId,
-                           text: %Q{#{START_BOT_MESSAGE}},
+                           text: %Q{#{get_text_message(:start)}},
                            reply_markup: markup)
     else
-      bot.api.send_message(chat_id: chatId, text: %Q{#{BOT_MSW_LINK}})
+      bot.api.send_message(chat_id: chatId, text: %Q{#{get_text_message(:link_msw)}})
       bot.api.send_message(chat_id: chatId,
                            text: %Q{#{text}},
                            reply_markup: markup)
@@ -26,7 +18,7 @@ class BotMessage
 
   def self.send_message(bot, chatId, item = nil, inline = false)
     if item.nil?
-      bot.api.send_message(chat_id: chatId, text: %Q{#{BOT_ERROR_MESSAGE}})
+      bot.api.send_message(chat_id: chatId, text: %Q{#{get_text_message(:error)}})
     else
       send_location(bot, chatId, item, inline)
     end

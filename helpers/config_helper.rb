@@ -12,6 +12,10 @@ class ConfigHelper
     @@config_yaml[tag]
   end
 
+  def self.get_text_message(id)
+    config(:messages)[id]
+  end
+
   def self.action_spots?(message)
     config(:actions)[:spots].include?(message.query.to_s.downcase)
   end

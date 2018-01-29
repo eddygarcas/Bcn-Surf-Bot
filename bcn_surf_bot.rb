@@ -20,19 +20,19 @@ Telegram::Bot::Client.run(ENV[:BOT_API.to_s]) do |bot|
 
       when Telegram::Bot::Types::Message
         if message.venue && message.venue.location
-          BotMessage.send_bot_message(bot, message.chat.id, BotHelper.inline_markup, BOT_ACTION_MESSAGE)
+          BotMessage.send_bot_message(bot, message.chat.id, BotHelper.inline_markup, ConfigHelper.get_text_message(:inline))
         elsif message.location
-          BotMessage.send_bot_message(bot, message.chat.id, BotHelper.inline_markup, BOT_ACTION_MESSAGE)
+          BotMessage.send_bot_message(bot, message.chat.id, BotHelper.inline_markup, ConfigHelper.get_text_message(:inline))
         end
 
         case message.text
           when 'Help'
-            BotMessage.send_bot_message(bot, message.chat.id, BotHelper.inline_markup, BOT_HELP_MESSAGE)
+            BotMessage.send_bot_message(bot, message.chat.id, BotHelper.inline_markup, ConfigHelper.get_text_message(:help))
           when 'Start' || '/start'
             BotMessage.send_bot_message(bot, message.chat.id, BotHelper.inline_markup)
           else
             unless message.text.nil?
-              BotMessage.send_bot_message(bot, message.chat.id, BotHelper.inline_markup, BOT_ACTION_MESSAGE)
+              BotMessage.send_bot_message(bot, message.chat.id, BotHelper.inline_markup, ConfigHelper.get_text_message(:inline))
             end
         end
     end
