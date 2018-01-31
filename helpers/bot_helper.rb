@@ -15,17 +15,21 @@ class BotHelper < ConfigHelper
   end
 
   def self.inline_markup
-    kb = []
-    kb << inline_spots_markup
-    Telegram::Bot::Types::InlineKeyboardMarkup.new(inline_keyboard: kb)
+    Telegram::Bot::Types::InlineKeyboardMarkup.new(inline_keyboard: inline_spots_markup)
   end
 
   private
 
   def self.inline_spots_markup
-    keyboard_spots = []
-    config(:spots).each {|elem|
-      keyboard_spots << self.inline_button(elem.first)
+    keyboard_spots = Array.new(2) { Array.new }
+    count = 0
+    config(:spots).each{ |elem|
+      if ((count += 1) <= 3)
+        keyboard_spots.first << self.inline_button(elem.first)
+      else
+        keyboard_spots[1] << self.inline_button(elem.first)
+      end
+
     }
     keyboard_spots
   end

@@ -24,10 +24,31 @@
     :latitude: 41.475521
     :longitude: 2.307683
     :units: eu
+  zarautz:
+    :id: 1061
+    :name: Zarautz
+    :latitude: 43.288991
+    :longitude: -2.164308
+    :units: eu
+  mundaka:
+    :id: 169
+    :name: Mundaka
+    :latitude: 43.407004
+    :longitude: -2.696284
+    :units: eu
+  sopelana:
+    :id: 1124
+    :name: Sopelana
+    :latitude: 43.384445
+    :longitude: -3.003459
+    :units: eu
 :actions:
   :spots:
     barcelona:
     sitges:
     masnou:
+    zarautz:
+    mundaka:
+    sopelana:
   :inputs:
     setheight:
