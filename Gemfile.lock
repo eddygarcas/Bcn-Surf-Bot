@@ -45,7 +45,7 @@ DEPENDENCIES
   test-unit
 
 RUBY VERSION
-   ruby 2.4.0p0
+   ruby 2.6.3p62
 
 BUNDLED WITH
    1.16.1

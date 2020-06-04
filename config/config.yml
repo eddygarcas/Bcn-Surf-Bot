@@ -1,10 +1,10 @@
 :fields: localTimestamp,swell.components.combined.*,wind.speed,charts.swell
 :messages:
-  :start: "Thanks for using BcnSurfBot.\nAll data is provided by magicseaweed.com\nSelect one surf spot available"
-  :error: "Oops! Something went wrong, please press /start button again."
-  :help: "Use inline buttons below here or type the inline command @bcnsurfbot in any chat, the bot will prompt all surf spots available."
-  :inline: "Select one surf spot available"
-  :link_msw: "More at https://magicseaweed.com/"
+  :start: "🧑‍💻Author @eddygarcas Github https://github.com/eddygarcas\nThanks for using BcnSurfBot\n🌊 All data is provided by magicseaweed.com"
+  :error: "🤖Oops! Something went wrong, please press /start button again."
+  :help: "ℹ️ Use inline buttons below here or type the inline command @bcnsurfbot in any chat, the bot will prompt all surf spots available."
+  :inline: "🔘 Select one surf spot available"
+  :link_msw: "ℹ️ More at https://magicseaweed.com/"
 :spots:
   barcelona:
     :id: 3535
