@@ -1,7 +1,7 @@
 
 [![Magicseaweed](https://im-1-uk.msw.ms/msw_powered_by.png)](https://magicseaweed.com)
 
-# BcnSurfBot [![License](https://badgen.net/badge/license/MIT/blue)](https://github.com/eddygarcas/Bcn-Surf-Bot/LICENSE.txt)
+# BcnSurfBot [![License](https://badgen.net/badge/license/MIT/blue)](https://github.com/eddygarcas/Bcn-Surf-Bot/master/LICENSE.txt)
 
 Check out surf forecast from Magicseaweed reports using Telegram bot as interface.
 
