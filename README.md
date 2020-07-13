@@ -1,3 +1,7 @@
+https://magicseaweed.com/
+
+Check surf forecasts from Magicseaweed in your terminal.
+
 # BcnSurfBot
 
 Shows surf forecasts feeding from Magicseaweed api.
